@@ -14,10 +14,21 @@ type Character struct {
 }
 
 type RankTier struct {
-	RankTierTFT string `json:"RankTierTFT"`
-	IdTier      int    `json:"IdTier"`
-	Percent     int    `json:"Percent"`
+	CostTier int `json:"CostTier"`
+	Percent  int `json:"Percent"`
 }
+
+var mapQuantityByCost = map[int]int{
+	1: 29,
+	2: 22,
+	3: 18,
+	4: 12,
+	5: 10,
+}
+
+var mapQuantityCharacter = map[int]int{}
+
+var mapCharacterName = map[int]string{}
 
 var listCostCharacter = map[int][]Character{
 	1: {
@@ -91,91 +102,83 @@ var listCostCharacter = map[int][]Character{
 	},
 }
 
-var listTier = map[int]string{
-	1: "Tướng Bậc 1",
-	2: "Tướng Bậc 2",
-	3: "Tướng Bậc 3",
-	4: "Tướng Bậc 4",
-	5: "Tướng Bậc 5",
-}
-
 var level2 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 100},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 0},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 0},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 0},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 0},
+		{CostTier: 1, Percent: 100},
+		{CostTier: 2, Percent: 0},
+		{CostTier: 3, Percent: 0},
+		{CostTier: 4, Percent: 0},
+		{CostTier: 5, Percent: 0},
 	},
 }
 
 var level3 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 75},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 25},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 0},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 0},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 0},
+		{CostTier: 1, Percent: 75},
+		{CostTier: 2, Percent: 25},
+		{CostTier: 3, Percent: 0},
+		{CostTier: 4, Percent: 0},
+		{CostTier: 5, Percent: 0},
 	},
 }
 
 var level4 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 55},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 30},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 15},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 0},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 0},
+		{CostTier: 1, Percent: 55},
+		{CostTier: 2, Percent: 30},
+		{CostTier: 3, Percent: 15},
+		{CostTier: 4, Percent: 0},
+		{CostTier: 5, Percent: 0},
 	},
 }
 
 var level5 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 45},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 33},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 20},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 2},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 0},
+		{CostTier: 1, Percent: 45},
+		{CostTier: 2, Percent: 33},
+		{CostTier: 3, Percent: 20},
+		{CostTier: 4, Percent: 2},
+		{CostTier: 5, Percent: 0},
 	},
 }
 
 var level6 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 25},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 40},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 30},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 5},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 0},
+		{CostTier: 1, Percent: 25},
+		{CostTier: 2, Percent: 40},
+		{CostTier: 3, Percent: 30},
+		{CostTier: 4, Percent: 5},
+		{CostTier: 5, Percent: 0},
 	},
 }
 
 var level7 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 19},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 30},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 35},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 15},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 1},
+		{CostTier: 1, Percent: 19},
+		{CostTier: 2, Percent: 30},
+		{CostTier: 3, Percent: 35},
+		{CostTier: 4, Percent: 15},
+		{CostTier: 5, Percent: 1},
 	},
 }
 
 var level8 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 16},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 20},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 35},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 25},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 4},
+		{CostTier: 1, Percent: 16},
+		{CostTier: 2, Percent: 20},
+		{CostTier: 3, Percent: 35},
+		{CostTier: 4, Percent: 25},
+		{CostTier: 5, Percent: 4},
 	},
 }
 
 var level9 = Level{
 	LevelTft: []RankTier{
-		{RankTierTFT: listTier[1], IdTier: 1, Percent: 9},
-		{RankTierTFT: listTier[2], IdTier: 2, Percent: 15},
-		{RankTierTFT: listTier[3], IdTier: 3, Percent: 30},
-		{RankTierTFT: listTier[4], IdTier: 4, Percent: 30},
-		{RankTierTFT: listTier[5], IdTier: 5, Percent: 16},
+		{CostTier: 1, Percent: 9},
+		{CostTier: 2, Percent: 15},
+		{CostTier: 3, Percent: 30},
+		{CostTier: 4, Percent: 30},
+		{CostTier: 5, Percent: 16},
 	},
 }
 

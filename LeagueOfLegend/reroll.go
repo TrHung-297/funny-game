@@ -24,7 +24,7 @@ func GetRangesPercent(currentLV Level) []struct {
 		percentEnd := percentStart + tier.Percent
 		ranges[i].end = percentEnd
 		percentStart = percentEnd
-		ranges[i].costCharacter = tier.IdTier
+		ranges[i].costCharacter = tier.CostTier
 	}
 	return ranges
 }
@@ -83,4 +83,22 @@ func ReRoll(c *fiber.Ctx) {
 	userLevel, _ := strconv.ParseInt(c.Query("userLevel", "2"), 0, 64)
 	messages, _ := ReRollCharacterLeagueOfLegend(int(userLevel))
 	WriteSuccess(c, messages)
+}
+
+func Init() {
+	for index, listCharacter := range listCostCharacter {
+		for _, character := range listCharacter {
+			mapQuantityCharacter[character.Id] = mapQuantityByCost[index]
+			mapCharacterName[character.Id] = character.Name
+		}
+	}
+}
+
+func Pick(c *fiber.Ctx) {
+	idCharacter, _ := strconv.ParseInt(c.Query("idCharacter", "0"), 0, 64)
+	mapQuantityCharacter[int(idCharacter)]--
+	WriteSuccess(c, map[string]interface{}{
+		"Tướng pick là":       mapCharacterName[int(idCharacter)],
+		"Số lượng còn lại là": mapQuantityCharacter[int(idCharacter)],
+	})
 }
