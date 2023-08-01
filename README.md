@@ -6,13 +6,13 @@
 ** Api /api/v1/reroll
  Ví dụ đơn giản dựa trên nút đổi lại trong tựa game Teamfight Tactics.
 
-![](https://prnt.sc/bIp5E3Y8Cjcu)
+![Image](./Image/Screenshot_1.png)
 
 Khi ấn nút đổi lại sẽ xuất hiện ngẫu nhiên 5 vị tướng trên thanh tướng.
 
 Tỉ lệ xuất hiện các tướng và số lượng các tướng được thay đổi theo cấp độ của người chơi.
 
-![](https://prnt.sc/x1sLylotbYtU)
+![Image](./Image/Screenshot_2.png)
 
 ** Api /api/v1/lucky-spin
 
@@ -23,4 +23,4 @@ Mỗi khi người dùng quay sẽ được ngẫu nhiên phần quà trên vòn
 
 ** Chạy chương trình
 
-Để chạy chương trình ta chỉ cần chạy file .exe  .
+Để chạy chương trình trên window ta chỉ cần chạy file .exe  .
